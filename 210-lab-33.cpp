@@ -69,7 +69,13 @@ int main() {
                 Car c = lane[i].front();
                 lane[i].pop_front();
 
-                cout << "Paid:";
+                cout << "Paid: ";
+                c.print();
+            
+            } else if(chance < PAY_PROB + JOIN_PROB) {
+                Car c;
+                lane[i].push_back(c);
+                cout << "Joined: ";
                 c.print();
             
             } else {
@@ -87,11 +93,13 @@ int main() {
                 cout << "Switched: ";
                 c.print();
             }
+
+            cout << endl;
         
         }
 
         for(int i = 0; i < NUM_LANES; i++) {
-         cout << "Queue:\n";
+         cout << "Lane " << i + 1 << " Queue:\n";
          if(lane[i].empty()) {
             cout << "   Empty\n";
 
@@ -110,7 +118,6 @@ int main() {
     return 0;
 }
 
-
-
+}
 
 //my throat is killing me 
