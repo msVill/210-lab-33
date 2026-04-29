@@ -44,22 +44,23 @@ int main() {
     
     for(int time = 1; time <= MAX_TIME; time++) {
         cout << "Time: " << time << endl;
-         if(chance < 55) {
-            // car pays and leaves
-            Car c = lane.front();
-            lane.pop_front(); // I need to print whether the car/driver paid after this operation:
-            cout << "Operation: Car paid: ";
-            c.print();
-            cout << endl;
 
-         } else {
-            Car c;
-            lane.push_back(c);
+        // go through each lane
+        for(int i = 0; i < NUM_LANES; i++) { // inside this for-loop, the condition if empty and 50/50 prob
+            if(lane[i].empty()) {
+                int chance = rand() % 2;
 
-            cout << "Operation: Joined lane: ";
-            c.print();
-            cout << endl;
-         }
+                if(chance == 0) {
+                    Car c;
+                    lane[i].push_back(c);
+                    cout << "Joined: ";
+                    c.print();
+                } else {
+                    cout << "No action";
+                }
+            }
+        
+        }
 
          cout << "Queue:\n";
          if(lane.empty()) {
@@ -72,10 +73,8 @@ int main() {
                 cout << endl;
 
             }
-         }
+        }
 
-        // time needs to increment. from what? forgot to add start val.
-        time++;
     }
 
 
