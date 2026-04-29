@@ -26,7 +26,7 @@ int main() {
     }
 
     // Now I want to display it for Milestone 1 and see initial queue
-    cout << "Initial queue\n";
+    cout << "Initial queue: \n";
 
     for(auto &car : lane) {
         cout << "    ";
@@ -35,13 +35,19 @@ int main() {
     }
     
     int time = 1;
-    // I need to use a loop and have it run until deque is empty
-    // a for-loop for this will run until the condition is false,
-    // we need to run the loop UNTIL deque is empty
+    
     while(!lane.empty()) {
-        cout << "Time:" << time; // from the sample output, I need to show what loop operation time period
-        
-        // after each time period - display the queue using print()
+        cout << "\nTime: " << time; // from the sample output, I need to show what loop operation time period
+         int chance = rand() % 100;
+         // I need to add the logic for probability of joining or paying
+         if(chance < 55) {
+            // car pays and leaves
+            Car c = lane.front();
+            lane.pop_front(); 
+         } else {
+            Car c;
+            lane.push_back(c);
+         }
 
         // time needs to increment. from what? forgot to add start val.
         time++;
