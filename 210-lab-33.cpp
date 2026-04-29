@@ -15,6 +15,13 @@ int main() {
     srand(time(0));
     const int INITIAL_SIZE = 2;
     const int NUM_LANES = 4;
+    const int MAX_TIME = 20;
+
+    // probabilities:
+    const int PAY_PROB = 46;
+    const int JOIN_PROB = 39;
+    const int SWITCH_PROB = 15;
+
     deque<Car> lane[NUM_LANES]; //"...which are placed in the std::deque representing the 
                 // toll booth lane."
     for(int i = 0; i < NUM_LANES; i++) {
@@ -23,16 +30,17 @@ int main() {
          }
     }
 
-    // Now I want to display it for Milestone 1 and see initial queue
+    //
     cout << "Initial queue: \n";
     for(int i = 0; i < NUM_LANES; i++) {
+        cout << "Lane " << i + 1 << ":\n";
         for(auto &car : lane[i]) {
             cout << "    ";
              car.print();
             cout << endl;
         }
-    
-    int time = 1;
+    }
+    //int time = 1; // the time period is 20, make this a const
     
     while(!lane.empty()) {
         cout << "\nTime: " << time << " "; // from the sample output, I need to show what loop operation time period
