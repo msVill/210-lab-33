@@ -50,15 +50,21 @@ int main() {
          } else {
             Car c;
             lane.push_back(c);
+
+            cout << "Operation: Joined lane: ";
+            c.print();
+            cout << endl;
          }
 
          cout << "Queue:\n";
          if(lane.empty()) {
-            cout << "   Empty";
+            cout << "   Empty\n";
 
          } else {
             for(auto &car : lane) {
+                cout << "    ";
                 car.print();
+                cout << endl;
 
             }
          }
