@@ -4,34 +4,33 @@
 #include <cstdlib>
 #include "Car.h"
 using namespace std;
-// Comsc 210. Section 5068 | Martha S. Villalta | Lab 33
-// Requirements: use std::deque. Use a const and init to 2 
-// for init size of deque objects [ DONE! ]
-// (std::deque objects of Car type)
-// Use loop run until empty
-// commit at milestones [1]: successfully create a std::deque & pop. 
-//it w/2 Car objects.
-// milestone [2]: code successfully uses a loop that runs until deque isEmpty
-// Inside Loop: branch based on probabilities (rand())
+// Comsc 210. Section 5068 | Martha S. Villalta | Lab 33 (actual 33 start)
+// Add more lanes
+// Switching lanes
+// Probabilities: 46% = car at head of queue pays and leaves
+// 39% = another car joins ; 15% = rear car will shift lane)
+// 50/50 if (more sim. time, and lane is empty) a new car enters the queue/not.
 
 int main() {
     srand(time(0));
-    const int INITIAL_SIZE = 2; // will initialize starting number of deque Car objects
-    deque<Car> lane; //"...which are placed in the std::deque representing the 
+    const int INITIAL_SIZE = 2;
+    const int NUM_LANES = 4;
+    deque<Car> lane[NUM_LANES]; //"...which are placed in the std::deque representing the 
                 // toll booth lane."
-
-    for(int i = 0; i < INITIAL_SIZE; i++) {
-        lane.push_back(Car());
+    for(int i = 0; i < NUM_LANES; i++) {
+        for(int j = 0; j < INITIAL_SIZE; j++) { // so initial 
+            lane[i].push_back(Car());
+         }
     }
 
     // Now I want to display it for Milestone 1 and see initial queue
     cout << "Initial queue: \n";
-
-    for(auto &car : lane) {
-        cout << "    ";
-        car.print();
-        cout << endl;
-    }
+    for(int i = 0; i < NUM_LANES; i++) {
+        for(auto &car : lane[i]) {
+            cout << "    ";
+             car.print();
+            cout << endl;
+        }
     
     int time = 1;
     
