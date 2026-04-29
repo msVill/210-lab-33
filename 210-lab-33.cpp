@@ -60,6 +60,7 @@ int main() {
                 }
 
                 cout << endl;
+                continue;
             }
 
             int chance = rand() % 100;
@@ -108,3 +109,8 @@ int main() {
 
     return 0;
 }
+
+
+
+
+//my throat is killing me 
