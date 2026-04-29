@@ -20,7 +20,6 @@ int main() {
     deque<Car> lane; //"...which are placed in the std::deque representing the 
                 // toll booth lane."
 
-    // Now fill initial queue:
     for(int i = 0; i < INITIAL_SIZE; i++) {
         lane.push_back(Car());
     }
@@ -37,16 +36,31 @@ int main() {
     int time = 1;
     
     while(!lane.empty()) {
-        cout << "\nTime: " << time; // from the sample output, I need to show what loop operation time period
+        cout << "\nTime: " << time << " "; // from the sample output, I need to show what loop operation time period
          int chance = rand() % 100;
          // I need to add the logic for probability of joining or paying
          if(chance < 55) {
             // car pays and leaves
             Car c = lane.front();
-            lane.pop_front(); 
+            lane.pop_front(); // I need to print whether the car/driver paid after this operation:
+            cout << "Operation: Car paid: ";
+            c.print();
+            cout << endl;
+
          } else {
             Car c;
             lane.push_back(c);
+         }
+
+         cout << "Queue:\n";
+         if(lane.empty()) {
+            cout << "   Empty";
+
+         } else {
+            for(auto &car : lane) {
+                car.print();
+
+            }
          }
 
         // time needs to increment. from what? forgot to add start val.
