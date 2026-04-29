@@ -66,8 +66,24 @@ int main() {
             
             if(chance < PAY_PROB){
                 Car c = lane[i].front();
+                lane[i].pop_front();
 
                 cout << "Paid:";
+                c.print();
+            
+            } else {
+                Car c = lane[i].back();
+                lane[i].pop_back();
+
+                // inside I will need take into account a car switching
+
+                int newLane;
+                do {
+                    newLane = rand() % NUM_LANES;
+                } while (newLane == i);
+
+                lane[newLane].push_back(c);
+                cout << "Switched: ";
                 c.print();
             }
         
