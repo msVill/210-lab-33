@@ -22,8 +22,8 @@ int main() {
     const int JOIN_PROB = 39;
     const int SWITCH_PROB = 15;
 
-    deque<Car> lane[NUM_LANES]; //"...which are placed in the std::deque representing the 
-                // toll booth lane."
+    deque<Car> lane[NUM_LANES]; 
+    
     for(int i = 0; i < NUM_LANES; i++) {
         for(int j = 0; j < INITIAL_SIZE; j++) { // so initial 
             lane[i].push_back(Car());
@@ -42,10 +42,8 @@ int main() {
     }
     //int time = 1; // the time period is 20, make this a const
     
-    while(!lane.empty()) {
-        cout << "\nTime: " << time << " "; // from the sample output, I need to show what loop operation time period
-         int chance = rand() % 100;
-         // I need to add the logic for probability of joining or paying
+    for(int time = 1; time <= MAX_TIME; time++) {
+        cout << "Time: " << time << endl;
          if(chance < 55) {
             // car pays and leaves
             Car c = lane.front();
