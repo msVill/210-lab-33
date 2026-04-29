@@ -58,16 +58,28 @@ int main() {
                 } else {
                     cout << "No action";
                 }
+
+                cout << endl;
+            }
+
+            int chance = rand() % 100;
+            
+            if(chance < PAY_PROB){
+                Car c = lane[i].front();
+
+                cout << "Paid:";
+                c.print();
             }
         
         }
 
+        for(int i = 0; i < NUM_LANES; i++) {
          cout << "Queue:\n";
-         if(lane.empty()) {
+         if(lane[i].empty()) {
             cout << "   Empty\n";
 
          } else {
-            for(auto &car : lane) {
+            for(auto &car : lane[i]) {
                 cout << "    ";
                 car.print();
                 cout << endl;
